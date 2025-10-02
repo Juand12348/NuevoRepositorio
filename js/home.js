@@ -14,7 +14,6 @@ function generarLista(arraypokemones) {
 }
 
 
-
 function buscadorfuncion(sza){
     if(sza.length >= 3){
         const filtrados = [];
@@ -33,9 +32,6 @@ function buscadorfuncion(sza){
 }
 
 
-function buscadorfuncion(xds){
-    console.log(xds);
-}
 
 
 
