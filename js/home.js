@@ -1,7 +1,7 @@
 function generarLista(arraypokemones) {
     let listaHTML = "";
     for (let i = 0; i < arraypokemones.length; i++) {
-        let id = i;
+        let id = arraypokemones[i].url.split("/")[6];
         listaHTML += `
         <div class="c-lista-pokemon poke-${id}" onclick="Detalle('${id}')">
             <p>#${id}</p>
@@ -14,13 +14,30 @@ function generarLista(arraypokemones) {
 }
 
 
+
+function buscadorfuncion(sza){
+    if(sza.length >= 3){
+        const filtrados = [];
+        for (let i = 0; i < pokemones.length; i++) {
+            const nombre = pokemones[i].name.toLowerCase();
+            if (nombre.includes(sza.toLowerCase())) {
+                filtrados.push(pokemones[i]);
+            }
+        }
+        let listaHTML = generarLista(filtrados)
+        document.getElementById("la-lista").innerHTML = listaHTML;
+    }else{
+        let listaHTML = generarLista(pokemones)
+        document.getElementById("la-lista").innerHTML = listaHTML;
+    }
+}
+
+
 function buscadorfuncion(xds){
     console.log(xds);
 }
 
-function FiltroConexion(agtsd){
-    alert(agtsd);
-}
+
 
 function Home(){
     //buscador
