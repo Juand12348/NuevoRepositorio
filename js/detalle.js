@@ -12,7 +12,7 @@ async function Pokemon(parametro){
 
     root.innerHTML = `
     <section class="c-detalle">
-            <img src="" alt="">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png" alt="${data.name}" height="120" width="auto">
             <p>${data.name}</p>
             <p>${data.id}</p>
             <p>${tipoPoke}</p>
@@ -24,10 +24,3 @@ async function Pokemon(parametro){
     </section>
     `;
 }
-
-Pokemon("ditto");
-Pokemon(45);
-Pokemon(14);
-Pokemon(1);
-Pokemon(8);
-Pokemon(4);
