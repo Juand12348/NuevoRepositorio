@@ -13,7 +13,6 @@ function generarLista(arraypokemones) {
     return listaHTML;
 }
 
-
 function buscadorfuncion(sza){
     if(sza.length >= 3){
         const filtrados = [];
@@ -30,10 +29,6 @@ function buscadorfuncion(sza){
         document.getElementById("la-lista").innerHTML = listaHTML;
     }
 }
-
-
-
-
 
 function Home(){
     //buscador
