@@ -1,6 +1,6 @@
 var misNumeros = JSON.parse(localStorage.getItem("misNumeros")) || [];
 
-function Original(){
+function Aleatorios(){
     document.getElementById("nuevos").innerHTML = "";
     console.log("----------------------------------")
     let pokesAleatorios = "";
@@ -45,7 +45,7 @@ function Original(){
 
 
 
-function Capturados(){
+function Original(){
     document.getElementById("root").innerHTML = ""
 
     //crear aleatorios
