@@ -44,55 +44,37 @@ function Aleatorios(){
 
 
 
+function Original() {
+    const root = document.getElementById("root");
 
-function Original(){
-    document.getElementById("root").innerHTML = ""
+    // Leer mis personajes capturados desde localStorage
+    let misNumeros = JSON.parse(localStorage.getItem("misNumeros")) || [];
 
-    //crear aleatorios
-    const capturaAleatorea = document.createElement("section");
-    capturaAleatorea.classList.add("c-lista");
-    capturaAleatorea.id = "nuevos"
+    // Contenedor de todo el álbum
+    let misPersonajes = `<section class="c-misper">`;
 
-    //crear boton d aleatorios
-    const boton = document.createElement("button");
-    boton.textContent = "4 nuevos"
-    // Agregar el evento click para generar 4 nuevos pokes
-    boton.addEventListener("click", () => {
-        Aleatorios(); 
-    });
+    // Dibujar las 83 cartas
+    for (let i = 1; i <= 83; i++) {
+        let nombre = personajes[i - 1] ? personajes[i - 1].name : "Desconocido";
 
-
-    //crear album
-    const seccioncapturados = document.createElement("section");
-    seccioncapturados.classList.add("c-lista");
-
-    let misPokes = "";
-    for (let i = 1; i <= totalPokes; i++) {
-        if(misNumeros.includes(i)){
-            misPokes += `
-            <div class="c-unpoke c-mios-pokemon poke-${i}" onclick="Detalle('${i}')">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png" width="auto" height="45" loading="lazy" alt="${i}">
-                <p>${i}</p>
+        if (misNumeros.includes(i)) {
+            // Capturados → resaltados
+            misPersonajes += `
+            <div class="c-unper c-mios-personajes per-${i}" onclick="Detalle('${i}')">
+                <p>#${i}</p>
+                <p>${nombre}</p>
             </div>`;
-        }else{
-            misPokes += `
-            <div class="c-unpoke" id="c-unpoke-${i}">
-                <p>${i}</p>
-            </div>
-            `
+        } else {
+            // No capturados → muestran nombre pero estilo distinto
+            misPersonajes += `
+            <div class="c-unper no-capturado" id="c-unper-${i}">
+                <p>#${i}</p>
+                <p>${nombre}</p>
+            </div>`;
         }
-        
     }
-    seccioncapturados.innerHTML = misPokes;
 
-    //rangos y capturados
-    let contador = document.createElement("p");
-    contador.textContent = `${misNumeros.length} / ${totalPokes}`;
-    contador.id = "contador"
+    misPersonajes += `</section>`;
 
-    //añadir al elemento
-    document.getElementById("root").appendChild(contador)
-    document.getElementById("root").appendChild(boton)
-    document.getElementById("root").appendChild(capturaAleatorea)
-    document.getElementById("root").appendChild(seccioncapturados)
+    root.innerHTML = misPersonajes;
 }
