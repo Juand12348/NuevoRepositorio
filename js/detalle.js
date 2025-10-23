@@ -35,6 +35,16 @@ function toggleFavorito(paramid, paramname) {
     if (boton) boton.textContent = esFavorito ? "❤️" : "🤍";
 }
 
+function volverHome(){
+    Home();
+}
+
+function mostrarInformacion(){
+    document.getElementById("informacion").classList.toggle("mostrar");
+}
+
+
+
 async function Detalle(parametro){
     
     var root = document.getElementById("root");
@@ -53,18 +63,37 @@ async function Detalle(parametro){
 
     root.innerHTML = `
     <section class="c-detalle">
+
+            <div class="detalle-header">
+                <button id="volver"><</button>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1024px-International_Pok%C3%A9mon_logo.svg.png" alt="logo pokemon">
+                <img src="https://cdn-icons-png.flaticon.com/512/1169/1169608.png" alt="pokeball">
+            </div>
+
+            <div class="nombre">
+                <p>${data.name}</p>
+                <p>${data.id}</p>
+                <p>${tipoPoke}</p>
+            </div>
+
             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png" alt="${data.name}" height="120" width="auto">
-            <p>${data.name}</p>
-            <p>${data.id}</p>
-            <p>${tipoPoke}</p>
+            
+
+            <div class="detalle-informacion">
+                <button class="about" onClick="mostrarInformacion()">About</button>
+                <button onClick="toggleFavorito(${data.id}, '${data.name}')">
+                    <span id="corazon-${data.id}">${esFavorito ? '❤️' : '🤍'}</span> Favorito
+                </button>
+                
+            </div>
+
+            <div class="informacion" id="informacion">
             <p>${data.height / 10} m / Peso: ${data.weight / 10} kg</p>
             <p>${data.stats[0].base_stat}</p>
             <p>${data.stats[5].base_stat}</p>
             <p>${data.stats[1].base_stat} Defensa: ${data.stats[2].base_stat}</p>
             <p>${data.stats[3].base_stat} Defensa Especial: </p>
-            <button onClick="toggleFavorito(${data.id}, '${data.name}')">
-                <span id="corazon-${data.id}">${esFavorito ? '❤️' : '🤍'}</span> Favorito
-            </button>
+            </div>
     </section>
     `;
 }

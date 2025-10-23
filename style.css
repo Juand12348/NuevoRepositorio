@@ -1,0 +1,18 @@
+/* detalle */
+
+.detalle-header{
+    display: flex;
+    justify-content: space-around;
+}
+
+.detalle-header img{
+    height: 60px;
+}
+
+.informacion{
+    display: none;
+}
+
+.informacion.mostrar{
+    display: block;
+}
